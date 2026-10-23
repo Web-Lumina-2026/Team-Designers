@@ -1,0 +1,1099 @@
+/* ==========================================================================
+   CULTURE.EXE — Maximalist Y2K Desktop Stylesheet (Windows Only)
+   ========================================================================== */
+
+:root {
+  --pink: #FF9DE2;
+  --blue: #8FD3FF;
+  --lilac: #C9B6FF;
+  --y2k-pink: #FF007F;
+  --y2k-yellow: #FFEA00;
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  user-select: none;
+  background-color: #faf7ff;
+}
+
+/* Custom Holographic Y2K Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(201, 182, 255, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #FF9DE2 0%, #C9B6FF 50%, #8FD3FF 100%);
+  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FF007F 0%, #C9B6FF 50%, #00F0FF 100%);
+}
+
+#landing-ui-layer {
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  will-change: transform, filter, opacity;
+}
+
+/* Content cards in deeper sections */
+.manifesto-glass-panel {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.58);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 25px 60px rgba(100, 116, 139, 0.16),
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+.artifact-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.artifact-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(201, 182, 255, 0.45), 0 0 25px rgba(255, 157, 226, 0.35);
+  border-color: rgba(255, 255, 255, 1);
+}
+
+/* ==========================================================================
+   1. Animated Holographic Iridescent Background (#FF9DE2, #8FD3FF, #C9B6FF)
+   ========================================================================== */
+
+.holographic-background-wrapper {
+  background: radial-gradient(
+    circle at 50% 50%,
+    #fcfaff 0%,
+    #f5edff 40%,
+    #ebf3ff 100%
+  );
+  overflow: hidden;
+}
+
+.holo-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.82;
+  mix-blend-mode: multiply;
+  will-change: transform, opacity;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* Pink Orb (#FF9DE2) */
+.holo-orb-1 {
+  width: 50vw;
+  height: 50vw;
+  max-width: 800px;
+  max-height: 800px;
+  top: -10%;
+  left: -5%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    var(--pink) 0%,
+    rgba(255, 157, 226, 0.6) 50%,
+    transparent 80%
+  );
+  animation: float-pink 16s ease-in-out infinite alternate;
+}
+
+/* Baby Blue Orb (#8FD3FF) */
+.holo-orb-2 {
+  width: 55vw;
+  height: 55vw;
+  max-width: 850px;
+  max-height: 850px;
+  bottom: -15%;
+  right: -5%;
+  background: radial-gradient(
+    circle at 60% 60%,
+    var(--blue) 0%,
+    rgba(143, 211, 255, 0.65) 50%,
+    transparent 80%
+  );
+  animation: float-blue 18s ease-in-out infinite alternate;
+}
+
+/* Lilac Orb (#C9B6FF) */
+.holo-orb-3 {
+  width: 48vw;
+  height: 48vw;
+  max-width: 750px;
+  max-height: 750px;
+  top: 25%;
+  left: 30%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--lilac) 0%,
+    rgba(201, 182, 255, 0.55) 45%,
+    transparent 80%
+  );
+  animation: float-lilac 15s ease-in-out infinite alternate;
+}
+
+/* Prismatic Highlight Orb */
+.holo-orb-4 {
+  width: 40vw;
+  height: 40vw;
+  max-width: 650px;
+  max-height: 650px;
+  bottom: 10%;
+  left: 10%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(143, 211, 255, 0.45) 40%,
+    rgba(255, 157, 226, 0.3) 70%,
+    transparent 85%
+  );
+  animation: float-prism 13s ease-in-out infinite alternate;
+}
+
+/* Dynamic rotating light sheen */
+.holo-light-sweep {
+  position: absolute;
+  inset: -120%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    rgba(255, 157, 226, 0.16) 0deg,
+    rgba(143, 211, 255, 0.22) 80deg,
+    rgba(201, 182, 255, 0.25) 160deg,
+    rgba(255, 255, 255, 0.4) 240deg,
+    rgba(255, 157, 226, 0.16) 360deg
+  );
+  filter: blur(80px);
+  mix-blend-mode: color-dodge;
+  animation: rotate-hologram 35s linear infinite;
+  pointer-events: none;
+}
+
+/* Micro-noise Foil Grain Overlay */
+.holo-grain-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.038'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   2. Rigid Technical Blueprint Grid Overlay
+   ========================================================================== */
+
+.rigid-grid-overlay {
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(201, 182, 255, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(201, 182, 255, 0.25) 1px, transparent 1px);
+}
+
+.grid-mesh-lines {
+  position: absolute;
+  inset: 0;
+  background-size: 16px 16px;
+  background-image: 
+    radial-gradient(circle, rgba(143, 211, 255, 0.35) 0.8px, transparent 0.8px);
+}
+
+/* Technical Rulers along edges */
+.ruler-x {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: rgba(100, 116, 139, 0.5);
+  border-bottom: 1px dashed rgba(201, 182, 255, 0.5);
+}
+
+.ruler-y {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: rgba(100, 116, 139, 0.5);
+  border-right: 1px dashed rgba(201, 182, 255, 0.5);
+}
+
+/* Coordinate Crosshairs */
+.crosshair {
+  position: absolute;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(147, 51, 234, 0.45);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   3. Liquid Chrome Headline Typography & Metallic Gradients
+   ========================================================================== */
+
+.chrome-wrapper {
+  perspective: 1200px;
+  padding: 0.5rem 0.5rem;
+  display: inline-block;
+  position: relative;
+}
+
+.liquid-chrome-headline {
+  font-family: 'Syne', sans-serif;
+  font-weight: 900;
+  font-size: clamp(4.6rem, 5.8vw, 6.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0.04em 0.06em;
+  word-break: keep-all;
+  white-space: nowrap;
+  
+  /* Multi-stop liquid metal horizon reflection */
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 8%,
+    #e2e8f0 18%,
+    #94a3b8 28%,
+    #475569 40%,
+    #1e293b 45%,
+    #0f172a 48%,
+    #1e1b4b 52%,
+    #334155 56%,
+    #64748b 64%,
+    #cbd5e1 75%,
+    #ffffff 88%,
+    #e2e8f0 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Crisp high-gloss bevel stroke */
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.95);
+
+  /* Layered 3D metallic drop shadows */
+  filter: 
+    drop-shadow(0 1px 0px rgba(255, 255, 255, 0.95))
+    drop-shadow(0 -1px 0px rgba(255, 255, 255, 0.8))
+    drop-shadow(0 4px 6px rgba(15, 23, 42, 0.18))
+    drop-shadow(0 12px 24px rgba(30, 41, 59, 0.22))
+    drop-shadow(0 20px 45px rgba(201, 182, 255, 0.45));
+
+  /* Interactive smooth 3D tilt */
+  transform: translate3d(var(--mouse-x), var(--mouse-y), 0) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition: transform 0.12s cubic-bezier(0.1, 0.9, 0.2, 1);
+  will-change: transform;
+}
+
+/* Liquid Specular Light Sweep */
+.liquid-chrome-headline::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  padding: inherit;
+  text-align: inherit;
+  white-space: inherit;
+  
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 36%,
+    rgba(255, 157, 226, 0.45) 44%,
+    rgba(255, 255, 255, 1) 49%,
+    rgba(143, 211, 255, 0.75) 53%,
+    rgba(201, 182, 255, 0.45) 58%,
+    transparent 68%,
+    transparent 100%
+  );
+  background-size: 280% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.9);
+  mix-blend-mode: color-dodge;
+  animation: liquid-mercury-gleam 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+/* Prismatic Ambient Bounce Reflection */
+.liquid-chrome-headline::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  padding: inherit;
+  text-align: inherit;
+  white-space: inherit;
+  
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 55%,
+    rgba(255, 157, 226, 0.35) 72%,
+    rgba(143, 211, 255, 0.5) 86%,
+    rgba(201, 182, 255, 0.7) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2.5px rgba(201, 182, 255, 0.5);
+  filter: blur(4px);
+  transform: translateY(2px) scale(0.998);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   4. Prominent Pill-Shaped "Disable Gravity" Glassmorphism Button
+   ========================================================================== */
+
+.gravity-pill-btn {
+  /* Semi-transparent white foundation */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 245, 253, 0.55) 45%,
+    rgba(238, 247, 255, 0.65) 100%
+  );
+  
+  /* Background blur */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  /* Crisp white border */
+  border: 2px solid rgba(255, 255, 255, 0.95);
+
+  /* 
+     Inner white glow & multi-layered glass shadows:
+     - Upper inner white rim highlight
+     - Lower inner ambient glow
+     - Deep inner white radiance
+     - Ambient holographic diffuse drop shadow
+  */
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 1),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.6),
+    inset 0 0 16px rgba(255, 255, 255, 0.85),
+    0 4px 12px rgba(15, 23, 42, 0.08),
+    0 12px 30px rgba(201, 182, 255, 0.45),
+    0 24px 50px rgba(143, 211, 255, 0.35);
+
+  overflow: hidden;
+  position: relative;
+}
+
+/* Pill Glass Top Dome Reflection Shine */
+.pill-gloss-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.25) 80%,
+    transparent 100%
+  );
+  border-radius: 9999px 9999px 0 0;
+  pointer-events: none;
+}
+
+/* Hover & Active States */
+.gravity-pill-btn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 240, 252, 0.7) 45%,
+    rgba(235, 245, 255, 0.8) 100%
+  );
+  box-shadow: 
+    inset 0 2px 5px rgba(255, 255, 255, 1),
+    inset 0 -2px 8px rgba(255, 255, 255, 0.7),
+    inset 0 0 24px rgba(255, 255, 255, 0.95),
+    0 8px 24px rgba(255, 0, 127, 0.25),
+    0 16px 40px rgba(201, 182, 255, 0.55);
+}
+
+.gravity-pill-btn.gravity-btn-active {
+  border-color: #FF007F;
+  box-shadow: 
+    inset 0 2px 6px rgba(255, 255, 255, 1),
+    inset 0 0 20px rgba(255, 0, 127, 0.35),
+    0 0 35px rgba(255, 0, 127, 0.45);
+}
+
+.gravity-pill-btn.gravity-btn-active .gravity-icon {
+  transform: rotate(180deg);
+  color: #FF007F;
+}
+
+/* ==========================================================================
+   5. Translucent Early-2000s OS Window Panel & Scotch Tape
+   ========================================================================== */
+
+#os-window {
+  box-shadow: 
+    0 8px 32px rgba(100, 116, 139, 0.25),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+/* Scotch Tape Style for Polaroids */
+.scotch-tape {
+  position: absolute;
+  width: 70px;
+  height: 22px;
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(2px);
+  border-left: 1px dashed rgba(200, 200, 200, 0.6);
+  border-right: 1px dashed rgba(200, 200, 200, 0.6);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  z-index: 30;
+  pointer-events: none;
+}
+
+/* Soundwave visualizer bars */
+.soundwave-bar {
+  transition: height 0.2s ease;
+}
+
+@keyframes bounceSound1 {
+  0%, 100% { height: 6px; }
+  50% { height: 18px; }
+}
+
+@keyframes bounceSound2 {
+  0%, 100% { height: 16px; }
+  50% { height: 8px; }
+}
+
+@keyframes bounceSound3 {
+  0%, 100% { height: 10px; }
+  50% { height: 22px; }
+}
+
+@keyframes bounceSound4 {
+  0%, 100% { height: 20px; }
+  50% { height: 12px; }
+}
+
+.animate-sound-1 { animation: bounceSound1 0.8s ease-in-out infinite; }
+.animate-sound-2 { animation: bounceSound2 0.7s ease-in-out infinite; }
+.animate-sound-3 { animation: bounceSound3 0.9s ease-in-out infinite; }
+.animate-sound-4 { animation: bounceSound4 0.6s ease-in-out infinite; }
+
+/* ==========================================================================
+   6. Zero-Gravity Physics Simulation Keyframes & Matter.js Active Styles
+   ========================================================================== */
+
+/* Regular state: subtle hovering drift */
+.floating-element {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Prevent native image dragging so MouseConstraint can grab polaroids seamlessly */
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+/* When Matter.js physics is active on an element */
+.physics-active {
+  cursor: grab !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  transition: none !important;
+  animation: none !important;
+  will-change: transform;
+}
+
+.physics-active:active {
+  cursor: grabbing !important;
+}
+
+/* Floating element hover lift when static */
+body:not(.zero-gravity-mode) .floating-element:hover {
+  filter: brightness(1.03);
+}
+
+@keyframes zero-g-drift-1 {
+  0% { transform: translate(0px, 0px) rotate(0deg); }
+  50% { transform: translate(25px, -35px) rotate(4deg); }
+  100% { transform: translate(-30px, 20px) rotate(-3deg); }
+}
+
+@keyframes zero-g-drift-2 {
+  0% { transform: translate(0px, 0px) rotate(6deg); }
+  50% { transform: translate(-35px, -45px) rotate(-8deg); }
+  100% { transform: translate(20px, 25px) rotate(14deg); }
+}
+
+@keyframes zero-g-drift-3 {
+  0% { transform: translate(0px, 0px) rotate(-12deg); }
+  50% { transform: translate(40px, -50px) rotate(2deg); }
+  100% { transform: translate(-20px, 30px) rotate(-18deg); }
+}
+
+@keyframes zero-g-drift-4 {
+  0% { transform: translate(0px, 0px) rotate(-12deg) scale(1); }
+  50% { transform: translate(30px, -40px) rotate(25deg) scale(1.08); }
+  100% { transform: translate(-25px, -20px) rotate(-25deg) scale(0.95); }
+}
+
+@keyframes zero-g-drift-5 {
+  0% { transform: translate(0px, 0px) rotate(12deg) scale(1); }
+  50% { transform: translate(-50px, 30px) rotate(180deg) scale(1.15); }
+  100% { transform: translate(30px, -45px) rotate(360deg) scale(1); }
+}
+
+@keyframes zero-g-float-headline {
+  0% { transform: translate3d(var(--mouse-x), var(--mouse-y), 0) translateY(0px); }
+  50% { transform: translate3d(var(--mouse-x), var(--mouse-y), 0) translateY(-14px) rotateX(4deg); }
+  100% { transform: translate3d(var(--mouse-x), var(--mouse-y), 0) translateY(8px) rotateX(-3deg); }
+}
+
+/* ==========================================================================
+   7. Background Fluid Animations
+   ========================================================================== */
+
+@keyframes float-pink {
+  0% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+  50% { transform: translate(7vw, 9vh) scale(1.12) rotate(12deg); }
+  100% { transform: translate(-4vw, 5vh) scale(0.96) rotate(-8deg); }
+}
+
+@keyframes float-blue {
+  0% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+  50% { transform: translate(-8vw, -7vh) scale(1.15) rotate(-15deg); }
+  100% { transform: translate(5vw, -4vh) scale(0.92) rotate(8deg); }
+}
+
+@keyframes float-lilac {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(6vw, -5vh) scale(1.08); }
+  100% { transform: translate(-7vw, 7vh) scale(0.94); }
+}
+
+@keyframes float-prism {
+  0% { transform: translate(0px, 0px) scale(1); opacity: 0.65; }
+  50% { transform: translate(10vw, -8vh) scale(1.2); opacity: 0.9; }
+  100% { transform: translate(3vw, 4vh) scale(0.98); opacity: 0.6; }
+}
+
+@keyframes rotate-hologram {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes liquid-mercury-gleam {
+  0% { background-position: -140% 0%; }
+  38%, 100% { background-position: 240% 0%; }
+}
+
+/* ==========================================================================
+   8. 3D Hover Tilt, Layered Depth & Shimmer Animations
+   ========================================================================== */
+
+.floating-element {
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  transition: box-shadow 0.25s ease;
+}
+
+.floating-element:hover {
+  z-index: 45;
+  box-shadow: 
+    0 20px 40px -10px rgba(201, 182, 255, 0.45),
+    0 0 25px rgba(255, 157, 226, 0.3);
+}
+
+.floating-tilt-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.08s ease-out;
+  will-change: transform;
+  width: 100%;
+  height: 100%;
+}
+
+/* Shimmer Border Animation on Drop/Release */
+.shimmer-active {
+  animation: border-shimmer-sweep 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+@keyframes border-shimmer-sweep {
+  0% {
+    box-shadow: 
+      0 0 0 0px rgba(255, 255, 255, 0),
+      0 0 0 0px rgba(255, 157, 226, 0.9),
+      0 0 35px rgba(143, 211, 255, 0.85);
+    filter: brightness(1.25);
+  }
+  30% {
+    box-shadow: 
+      0 0 0 3px rgba(255, 255, 255, 0.95),
+      0 0 22px 6px rgba(255, 157, 226, 0.8),
+      0 0 50px 10px rgba(201, 182, 255, 0.7);
+    filter: brightness(1.4);
+  }
+  100% {
+    box-shadow: 
+      0 0 0 0px rgba(255, 255, 255, 0),
+      0 0 0 0px rgba(255, 157, 226, 0),
+      0 20px 35px rgba(0, 0, 0, 0.08);
+    filter: brightness(1.0);
+  }
+}
+
+/* Retro Pixel Cursor */
+.pixel-cursor-input {
+  cursor: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 2H9V14H7V2Z' fill='%23FF007F'/%3E%3Cpath d='M5 2H11V4H5V2Z' fill='%23111827'/%3E%3Cpath d='M5 12H11V14H5V12Z' fill='%23111827'/%3E%3C/svg%3E") 8 8, text !important;
+}
+
+.pixel-pointer {
+  cursor: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 17L10 10L17 7L1 1Z' fill='%23FFEA00' stroke='%23000' stroke-width='1.5' stroke-linejoin='bevel'/%3E%3C/svg%3E") 1 1, pointer !important;
+}
+
+/* Retro Winamp / Windows Media Player Y2K Styling */
+.retro-media-player {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 20px 45px rgba(100, 116, 139, 0.22),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+.lcd-display {
+  background: #111827;
+  border: 1.5px solid #374151;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.85);
+}
+
+.track-item {
+  transition: all 0.2s ease;
+}
+
+.track-item:hover, .track-item.active-track {
+  background: linear-gradient(90deg, rgba(255, 157, 226, 0.35) 0%, rgba(201, 182, 255, 0.4) 100%);
+  border-left-color: #FF007F;
+}
+
+/* OS Window WebGL Refraction Overlay */
+.refraction-backdrop {
+  position: relative;
+  overflow: hidden;
+}
+
+.refraction-backdrop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--refract-x, 50%) var(--refract-y, 50%), rgba(255,255,255,0.4) 0%, transparent 60%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   9. Global 'Party Mode' Digital Rave & Clashing Colours Strobing
+   ========================================================================== */
+
+/* Flat Clashing Colors Rave Strobe */
+@keyframes rave-clashing-strobe {
+  0% { background-color: #FF3D7F; }    /* Hot Pink */
+  22% { background-color: #FFD400; }   /* Electric Yellow */
+  45% { background-color: #2B59FF; }   /* Cobalt Blue */
+  68% { background-color: #00FF66; }   /* Acid Lime */
+  85% { background-color: #FF3D7F; }   /* Hot Pink */
+  100% { background-color: #FFD400; }
+}
+
+.party-rave-active .holographic-background-wrapper {
+  animation: rave-clashing-strobe 0.28s steps(1, end) infinite !important;
+  opacity: 0.95 !important;
+}
+
+.party-rave-active .holo-orb {
+  display: none !important; /* Override soft iridescent gradient with flat clashing colors */
+}
+
+.party-rave-active .liquid-chrome-headline {
+  animation: rave-text-flicker 0.15s infinite alternate !important;
+  text-shadow: 
+    -4px -4px 0 #FF3D7F, 
+    4px 4px 0 #2B59FF, 
+    -4px 4px 0 #FFD400,
+    0 0 30px #FFFFFF !important;
+}
+
+@keyframes rave-text-flicker {
+  0% { filter: contrast(200%) hue-rotate(0deg); }
+  50% { filter: contrast(300%) hue-rotate(90deg) invert(10%); }
+  100% { filter: contrast(250%) hue-rotate(180deg); }
+}
+
+/* Memphis Style Confetti Decorators */
+.memphis-confetti {
+  pointer-events: none;
+  position: fixed;
+  z-index: 45;
+  will-change: transform, opacity;
+}
+
+/* Thick Memphis borders with solid flat fills */
+.memphis-triangle {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 35px solid #FFD400;
+  filter: drop-shadow(3px 3px 0px #000);
+}
+
+.memphis-polka {
+  background-image: radial-gradient(#000 25%, transparent 25%);
+  background-size: 8px 8px;
+}
+
+.memphis-zigzag {
+  stroke: #000;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  filter: drop-shadow(2px 2px 0px #FF3D7F);
+}
+
+/* ==========================================================================
+   10. Meme Stream Cutouts, Pop-Culture Stickers & Pixel Badges
+   ========================================================================== */
+
+.meme-cutout {
+  border: 3.5px solid #FFFFFF;
+  box-shadow: 
+    0 12px 28px rgba(0, 0, 0, 0.25),
+    4px 4px 0px rgba(0, 0, 0, 0.9);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  user-select: none;
+}
+
+.meme-cutout:hover {
+  box-shadow: 
+    0 20px 40px rgba(255, 61, 127, 0.4),
+    6px 6px 0px #000;
+  border-color: #FFEA00;
+}
+
+.meme-sticker {
+  filter: drop-shadow(3px 4px 0px rgba(0,0,0,0.85));
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.meme-sticker:hover {
+  filter: drop-shadow(0px 0px 14px rgba(255, 61, 127, 0.85)) drop-shadow(3px 4px 0px #000);
+}
+
+.pixel-art-badge {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0px #000;
+}
+
+/* Meme Cannon & Party Mode Button Accents */
+.cannon-btn-glow {
+  box-shadow: 
+    0 0 0 2px rgba(255, 255, 255, 0.9),
+    0 10px 25px rgba(255, 61, 127, 0.45),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+.party-btn-glow {
+  box-shadow: 
+    0 0 0 2px rgba(255, 255, 255, 0.9),
+    0 10px 25px rgba(43, 89, 255, 0.45),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+.party-btn-active {
+  background: #FFD400 !important;
+  color: #000 !important;
+  border-color: #000 !important;
+  box-shadow: 
+    0 0 35px #FFD400,
+    0 0 0 3px #FF3D7F !important;
+  animation: party-btn-pulse 0.3s infinite alternate;
+}
+
+/* ==========================================================================
+   11. Retro Windows Dropdowns, Disco Dancer & Gen-Z Landing Accents
+   ========================================================================== */
+
+/* Classic Windows Aero / 2000 Menu Dropdown */
+.retro-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  min-width: 210px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.18),
+    0 3px 6px rgba(0, 0, 0, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 1);
+  border-radius: 8px;
+  padding: 4px;
+  z-index: 100;
+  display: none;
+  animation: retro-dropdown-in 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.retro-dropdown-menu.menu-open {
+  display: block;
+}
+
+@keyframes retro-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.retro-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #1e293b;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  user-select: none;
+}
+
+.retro-menu-item:hover {
+  background: linear-gradient(90deg, #FF3D7F 0%, #C9B6FF 100%);
+  color: #ffffff;
+  font-weight: 700;
+  transform: translateX(2px);
+}
+
+.retro-menu-separator {
+  height: 1px;
+  background: rgba(148, 163, 184, 0.35);
+  margin: 4px 6px;
+}
+
+/* Disco Dancer Animation & Disco Ball */
+@keyframes disco-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes disco-light-rays {
+  0% { filter: hue-rotate(0deg) drop-shadow(0 0 12px rgba(255, 61, 127, 0.8)); }
+  50% { filter: hue-rotate(180deg) drop-shadow(0 0 18px rgba(255, 212, 0, 0.9)); }
+  100% { filter: hue-rotate(360deg) drop-shadow(0 0 12px rgba(43, 89, 255, 0.8)); }
+}
+
+@keyframes dance-groove {
+  0%, 100% { transform: translateY(0px) rotate(-4deg) scale(1); }
+  25% { transform: translateY(-7px) rotate(3deg) scale(1.05); }
+  50% { transform: translateY(0px) rotate(-2deg) scale(0.96); }
+  75% { transform: translateY(-9px) rotate(5deg) scale(1.06); }
+}
+
+.animate-dance {
+  animation: dance-groove 0.72s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transform-origin: bottom center;
+}
+
+.disco-ball-spin {
+  animation: disco-spin 12s linear infinite, disco-light-rays 3s infinite linear;
+}
+
+/* Cassette Tape & BGM Mini Player */
+@keyframes spin-reel {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin-active {
+  animation: spin-reel 2.4s linear infinite;
+}
+
+.mini-bgm-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+/* Gen-Z Holographic Starburst */
+@keyframes genz-float-shimmer {
+  0%, 100% { transform: translateY(0px) rotate(6deg); }
+  50% { transform: translateY(-6px) rotate(10deg); }
+}
+
+.genz-badge-float {
+  animation: genz-float-shimmer 4s ease-in-out infinite;
+}
+
+/* Retro Modal System */
+.retro-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.retro-modal-backdrop.modal-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.retro-window-modal {
+  width: 90%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px);
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  transform: scale(0.92);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.retro-modal-backdrop.modal-open .retro-window-modal {
+  transform: scale(1);
+}
+
+/* ==========================================================================
+   12. Disguised Google Search Console & Trends/Memes Radar Section
+   ========================================================================== */
+
+/* Disguised Google Search Window */
+.google-disguise-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.12),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+.google-logo-y2k {
+  font-family: 'Syne', sans-serif;
+  letter-spacing: -1.5px;
+  font-weight: 900;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+}
+
+.google-g1 { color: #4285F4; }
+.google-o1 { color: #EA4335; }
+.google-o2 { color: #FBBC05; }
+.google-g2 { color: #4285F4; }
+.google-l  { color: #34A853; }
+.google-e  { color: #EA4335; }
+
+.search-mode-pill {
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.search-mode-pill.active {
+  background: #1e1b4b;
+  color: #FFEA00;
+  box-shadow: 0 4px 12px rgba(30, 27, 75, 0.35);
+}
+
+/* Radar Trend Cards */
+.radar-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.radar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(255, 61, 127, 0.2);
+}
+
+.radar-tag {
+  background: linear-gradient(135deg, rgba(255, 61, 127, 0.15) 0%, rgba(43, 89, 255, 0.15) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+
